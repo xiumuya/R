@@ -1,0 +1,5 @@
+First	Last	Math	Science	Social.Studies
+11	 Bob	 Smith	90	87	67
+12	 Jane	 Weary	75	NA	80
+13	 Dan	Thornton III	65	75	70
+14	 Mary	O'Leary	90	95	92
