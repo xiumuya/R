@@ -18,7 +18,6 @@ mydata
 
 ## 从带分隔符的文本文件中导入数据
 grades <- read.table("./r_note/student_grades.csv", header = TRUE,
-                     row.names = "StudentID",
                      sep = ",")
 grades
 #    First           Last MAth Science Social.Studies
@@ -54,4 +53,4 @@ write.csv(grades, "./data/studentInfo.csv", quote = FALSE,
 
 ## write_table
 write.table(grades, file = "./data/studentInfo.txt",
-            quote = FALSE, sep = "\t")
+            quote = FALSE, sep = "\t", row.names = FALSE)
