@@ -87,7 +87,6 @@ for (i in 1:11){
   }
   k <- j - 1
 }
-
 mtupper
 # 9
 row.names(mtupper) <- rep("NULL", 11)
