@@ -59,7 +59,7 @@ print(sum_3_5)
 
 
 # 5
-set.seed(123)
+set.seed(123) #设置随机数种子
 
 r_vector <- rnorm(100, mean = 1, sd = 1)
 min_vecotr <- min(r_vector)
@@ -75,12 +75,12 @@ print(a)
 
 # 6
 count <- 1
-min.count <- vector()
-min.norm <- vector()
+min.count <- vector() # 最小值的位置
+min.norm <- vector() # 最小值
 repeat {
   r_vector100 <- rnorm(100, mean = 1, sd = 1)
   min.norm[count] <- min(r_vector100)
-  min.count[count] <- which.min(r_vector100)
+  min.count[count] <- which.min(r_vector100) # 找出最小值的索引
   count <- count + 1
   if (count > 100) {
     break
@@ -91,4 +91,3 @@ min.norm
 plot(min.norm, min.count, pch = 2, cex = 3 / 5, col = "red",
      xlab = "最小值", ylab = "出现位置")
 title("正态分布随机向量的最小值与出现位置的关系")
-
