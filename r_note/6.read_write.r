@@ -15,10 +15,11 @@ age gender weight
 23  M      60
 "
 mydata
-
 ## 从带分隔符的文本文件中导入数据
-grades <- read.table("./r_note/student_grades.csv", header = TRUE,
-                     sep = ",")
+column_names <- c("StudentID", "First", "Last", "Math", "Science",
+                  "Social Studies")
+grades <- read.table(".\\r_note\\student_grades.csv",
+                     header = TRUE, sep = ",")
 grades
 #    First           Last MAth Science Social.Studies
 # 11   Bob          Smith   90      87             67
@@ -54,3 +55,4 @@ write.csv(grades, "./data/studentInfo.csv", quote = FALSE,
 ## write_table
 write.table(grades, file = "./data/studentInfo.txt",
             quote = FALSE, sep = "\t", row.names = FALSE)
+

@@ -5,7 +5,6 @@ data
 # 2
 par(mfrow = c(1, 2))
 plot(data$height, data$weight)
-
 # 3
 plot(data$height, data$weight, xlab = "身高", ylab = "体重", pch = 2)
 
