@@ -91,3 +91,18 @@ min.norm
 plot(min.norm, min.count, pch = 2, cex = 3 / 5, col = "red",
      xlab = "最小值", ylab = "出现位置")
 title("正态分布随机向量的最小值与出现位置的关系")
+
+# 7
+## 7-1
+seq1 <- 1:50
+seq_2_p <- 2 ^ seq1
+seq_2_p
+
+## 7-2
+seq_square <- seq1 ^ 2
+seq_square
+
+## 7-3
+value <- seq_2_p[which(seq_2_p == seq_square)]
+value
+length(value)

@@ -10,16 +10,10 @@ b <- matrix(c2, nrow = 3, byrow = TRUE)
 b
 # 对应元素相乘(点乘)
 c2 <- a * b
+c2
 # 矩阵的乘法(叉乘)
 c3 <- a %*% b
 c3
-library(grid)
-library(vcd)
-attach(Arthritis)
-print(Treatment)
-
-
-
 
 # 3
 # generate by row
@@ -65,7 +59,9 @@ head(mtcars_bak)
 library(plyr)
 sid <- "2021442951"
 rename(mtcars_bak, c(vs = 51))
-
+write.csv(x = mtcars_bak, "./r_note/exercise/mtcars.csv", quote = FALSE)
+mtcarsnew <- read.csv("./r_note/exercise/mtcars.csv")
+mtcarsnew
 # 8
 mtcars_bak <- mtcars # 备份，防止源数据消失
 mm <- as.matrix(mtcars_bak)

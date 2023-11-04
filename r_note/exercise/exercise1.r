@@ -47,8 +47,10 @@ print(vector1[vector1 > 40])
 
 # 13
 vector2 <- rep(x = 1:5, times = 5)
+vector2
 # 14
 vector3 <- rep(0:4, each = 5)
+vector3
 
 # 15
 x <- rep(c(3, 2, 1), c(3, 4, 5))

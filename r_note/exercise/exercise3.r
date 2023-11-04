@@ -1,4 +1,3 @@
-
 # 1
 data <- read.csv(file = "./r_note/exercise/data.csv", sep = "", header = TRUE)
 data
