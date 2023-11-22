@@ -22,7 +22,7 @@ detach()
 dose <- c(20, 30, 40, 45, 60)
 drug_a <- c(16, 20, 27, 40, 60)
 drug_b <- c(15, 18, 25, 31, 40)
-plot(dose, drug_a, type = "b", lty = 3, lwd = 3,
+(dose, drug_a, type = "b", lty = 3, lwd = 3,
      pch = 15, cex = 2)
 
 ## can also use par()

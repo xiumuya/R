@@ -1,0 +1,124 @@
+# 实验1
+a <- c(1, 3, 5, 6)
+b <- matrix(c(1, 2, 3, 4, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1), nrow = 4)
+b
+## 使用det()函数求行列式
+det(b)
+## 使用solve()函数求逆矩阵
+solve(b)
+## 特征根和特征向量
+eig <- eigen(b)
+### 特征值
+print(eig$values)
+### 特征向量
+print(eig$vectors)
+
+## AB'A
+print(t(a) %*% b %*% a)
+
+
+
+# 实验2
+y1 <- c(160, 260, 210, 265, 240, 220, 275, 160, 275, 250)
+x1 <- c(70, 75, 65, 74, 72, 68, 78, 66, 70, 65)
+x2 <- c(35, 40, 40, 42, 38, 45, 42, 36, 44, 42)
+x3 <- c(1.0, 2.4, 2.0, 3.0, 1.2, 1.5, 4.0, 2.0, 3.2, 3.0)
+dataframe1 <- data.frame(y1, x1, x2, x3)
+
+## 多个变量之间的检验
+cor(dataframe1$y1, dataframe1[2:4])
+cor(dataframe1)
+
+## 线性方程
+fit <- lm(formula = y1 ~ x1 + x2 + x3, data = dataframe1)
+fit
+## y = -348.280 + 3.754 x1 + 7.101 x2 + 12.447 x3
+print(summary(fit))
+
+## 在统计学中，R-squared（也称为决定系数）是一个衡量模型拟合优度的指标。
+## 它的值介于0和1之间，表示模型解释的因变量变异性的比例。R-squared值越接近1，
+## 表示模型解释的变异性越大，拟合效果越好。
+## Multiple R-squared值为0.8055，表示模型能够解释80.55%的因变量的变异性，
+## 说明模型的拟合效果较好。
+## djusted R-squared值为0.7083，表示在考虑模型复杂性的情况下，模型仍然能够解释70.83%的因变量的变异性，
+## 说明模型的拟合效果较好
+## p值小于0.05 为0.01487，可以认为样本均值与假设均值之间的差异是显著的
+
+## 不是每个变量都通过了显著性检验， 其中最不显著的变量是x3
+fit <- lm(formula = y1 ~ x1 + x2, data = dataframe1)
+print(summary(fit))
+## 当a = 0.05 时， 每个变量都通过了显著性检验，
+## p值小于0.05 为0.006718，可以认为样本均值与假设均值之间的差异是显著的
+
+
+plot(y1)
+line(-348.280 + 3.754 * x1 + 7.101 * x2 + 12.447 * x3, "blue")
+line(-459.624 + 4.676 * x1 + 8.971 * x2, "red")
+
+
+# 练习三
+
+dataframe2 <- read.csv(".\\data\\data.csv", header = TRUE, sep = "\t")
+dataframe2
+pairs(~CF_TD + NI_TA + CA_CL + CA_NS, data = dataframe2)
+attach(dataframe2)
+library(MASS)
+ld <- lda(G ~ CF_TD + NI_TA + CA_CL + CA_NS)#线性判别模型
+ld #查看函数结果
+detach(dataframe2)
+## 1.5
+predict_ld <- predict(ld)
+df1 <- dataframe2$G[dataframe2$G == predict_ld$class]
+length_true <- length(df1)
+length_sum <- length(dataframe2$G)
+accuracy <- length_true / length_sum
+accuracy
+# 4
+# 最小距离法
+df2 <- read.table(".\\data\\data.txt", header = TRUE, sep = "\t")
+df2
+
+df_4 <- scale(df2[, 2:5])
+hc1 <- hclust(dist(df_4), method = "single")
+hc1
+par(mfrow = c(3, 2))
+plot(hc1)
+groups <- cutree(hc1, 3)
+groups
+
+
+# 类平均距离法
+hc2 <- hclust(dist(df_4), method = "average")
+hc2
+plot(hc2)
+groups <- cutree(hc2, k = 3)  # 分成三类
+print(groups)
+
+# 重心法
+hc3 <- hclust(dist(df_4), method = "centroid")
+plot(hc3)
+groups <- cutree(hc3, k = 3)  # 分成三类
+print(groups)
+
+# Ward法
+hc4 <- hclust(dist(df_4), method = "ward.D")
+plot(hc4)
+groups <- cutree(hc4, k = 3)  # 分成三类
+print(groups)
+
+# 最大距离法
+hc5 <- hclust(dist(df_4), method = "complete")
+plot(hc5)
+groups <- cutree(hc5, k = 3)  # 分成三类
+print(groups)
+
+# 中间距离法
+hc6 <- hclust(dist(df_4), method = "median")
+plot(hc6)
+groups <- cutree(hc6, k = 3)  # 分成三类
+print(groups)
+
+
+
+
+
