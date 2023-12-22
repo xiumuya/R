@@ -11,3 +11,4 @@ m <- c("A", "B", "C", "D", "E", "F")
 barplot(h, names.arg = m, xlab = "X", ylab = "Y", col = "#00cec9",
   main = "Chart", border = "#fdcb6e"
 )
+print()
